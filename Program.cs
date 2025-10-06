@@ -16,13 +16,41 @@ namespace HealthSystem
         static int shield = maxShield;
 
         static int lives = 3;
+
+        static bool isAlive = true;
         static void Main(string[] args)
         {
+
             ShowHud();
-            Console.ReadKey();
-            Console.Clear();
-            TakeDamage();
-            ShowHud();
+
+            while (isAlive == true)
+            {
+                Console.ReadKey();
+
+                Random random = new Random();
+                int nextMove = random.Next(1, 11); 
+
+                if (nextMove <= 8)
+                {
+                    Console.Clear();
+                    TakeDamage();
+                    ShowHud();
+                }
+                else if (nextMove == 9)
+                {
+                    Console.Clear();
+                    Heal();
+                    ShowHud();
+                }
+                else
+                {
+                    Console.Clear();
+                    RegenerateShield();
+                    ShowHud();
+                }
+            }
+
+            GameOver();
 
         }
 
@@ -45,7 +73,7 @@ namespace HealthSystem
             {
                 Console.Write("{0,25}", "Healthy");
             }
-            else if (health >= 50 && health <= 75)
+            else if (health >= 50 && health <= 90)
             {
                 Console.Write("{0,25}", "Hurt");
             }
@@ -85,23 +113,74 @@ namespace HealthSystem
             {
                 Console.WriteLine($"You took {damageAmount} amounts of damage to your Shield");
                 shield -= damageAmount;
+
+                if (shield <= 0)
+                {
+                    shield = 0;
+                }
             }
-            else
+            else if (shield == 0)
             {
                 Console.WriteLine($"You took {damageAmount} amounts of damage to your health");
                 health -= damageAmount;
+
+                if (health <= 0)
+                {
+                    health = 0;
+                }
+            }
+
+            if (health <= 0)
+            {
+                Revive();
             }
 
         }
 
         static void Heal()
         {
-            //
+            Random random = new Random();
+            int healAmount = random.Next(1, 26);
+
+            if (health <= 99)
+            {
+                Console.WriteLine($"You restored {healAmount} amounts of damage to your health");
+                health += healAmount;
+
+            }
+            else
+            {
+                health = 100;
+                Console.WriteLine("You tried to heal your health, but your health is full");
+            }
+
+            if (health >= 100)
+            {
+                health = 100;
+            }
         }
 
         static void RegenerateShield()
         {
-            //
+            Random random = new Random();
+            int regenShieldAmount = random.Next(1, 26);
+
+            if (shield <= 99)
+            {
+                Console.WriteLine($"You restored {regenShieldAmount} amounts of damage to your shield");
+                shield += regenShieldAmount;
+
+            }
+            else
+            {
+                shield = 100;
+                Console.WriteLine("You tried to heal your shield, but your sheild is full");
+            }
+
+            if (shield >= 100)
+            {
+                shield = 100;
+            }
         }
 
         static void Revive()
