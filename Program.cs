@@ -37,7 +37,7 @@ namespace HealthSystem
             {
                 Console.Write("{0,25}", "Perfect Health");
             }
-            else if (health >= 75)
+            else if (health >= 90)
             {
                 Console.Write("{0,25}", "Healthy");
             }
@@ -70,6 +70,57 @@ namespace HealthSystem
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("{0,10}", "Lives:" + lives);
 
+        }
+
+        static int TakeDamage()
+        {
+            Random random = new Random();
+            int damageAmount = random.Next(1, 26);
+
+            if (shield != 0)
+            {
+                return shield - damageAmount;
+            }
+            else
+            {
+                return health - damageAmount;
+            }
+        }
+
+        static int Heal()
+        {
+            //
+        }
+
+        static int RegenerateShield()
+        {
+            //
+        }
+
+        static void Revive()
+        {
+            if (lives > 0)
+            {
+                maxHealth = 100;
+                health = maxHealth;
+
+                maxShield = 100;
+                shield = maxShield;
+
+                lives -= 1;
+            }
+            else
+            {
+                GameOver();
+            }
+            
+        }
+
+        static void GameOver()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.Write("{0,60}", "Game Over");
         }
     }
 }
