@@ -116,6 +116,7 @@ namespace HealthSystem
 
                 if (shield <= 0)
                 {
+                    health += shield;
                     shield = 0;
                 }
             }
