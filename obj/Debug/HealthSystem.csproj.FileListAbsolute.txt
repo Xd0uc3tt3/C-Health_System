@@ -1,0 +1,8 @@
+C:\XandersProjects\HealthSystem\HealthSystem\bin\Debug\HealthSystem.exe.config
+C:\XandersProjects\HealthSystem\HealthSystem\bin\Debug\HealthSystem.exe
+C:\XandersProjects\HealthSystem\HealthSystem\bin\Debug\HealthSystem.pdb
+C:\XandersProjects\HealthSystem\HealthSystem\obj\Debug\HealthSystem.csproj.AssemblyReference.cache
+C:\XandersProjects\HealthSystem\HealthSystem\obj\Debug\HealthSystem.csproj.CoreCompileInputs.cache
+C:\XandersProjects\HealthSystem\HealthSystem\obj\Debug\HealthSystem.exe
+C:\XandersProjects\HealthSystem\HealthSystem\obj\Debug\HealthSystem.pdb
+C:\XandersProjects\HealthSystem\HealthSystem\obj\Debug\HealthSystem.exe.config
