@@ -19,6 +19,10 @@ namespace HealthSystem
         static void Main(string[] args)
         {
             ShowHud();
+            Console.ReadKey();
+            Console.Clear();
+            TakeDamage();
+            ShowHud();
 
         }
 
@@ -60,39 +64,42 @@ namespace HealthSystem
 
             //Health
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("{0,60}", "Health:" + health + "/" + maxHealth);
+            Console.Write("{0,58}", "Health:" + health + "/" + maxHealth);
 
-            //Weapon
+            //Sheild
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("{0,17}", "Sheild:" + shield + "/" + maxShield);
 
-            //Score
+            //Lives
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("{0,10}", "Lives:" + lives);
 
         }
 
-        static int TakeDamage()
+        static void TakeDamage()
         {
             Random random = new Random();
             int damageAmount = random.Next(1, 26);
 
             if (shield != 0)
             {
-                return shield - damageAmount;
+                Console.WriteLine($"You took {damageAmount} amounts of damage to your Shield");
+                shield -= damageAmount;
             }
             else
             {
-                return health - damageAmount;
+                Console.WriteLine($"You took {damageAmount} amounts of damage to your health");
+                health -= damageAmount;
             }
+
         }
 
-        static int Heal()
+        static void Heal()
         {
             //
         }
 
-        static int RegenerateShield()
+        static void RegenerateShield()
         {
             //
         }
