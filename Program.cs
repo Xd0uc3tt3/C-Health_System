@@ -195,6 +195,8 @@ namespace HealthSystem
                 shield = maxShield;
 
                 lives -= 1;
+
+                Console.WriteLine("You died and used a revive");
             }
             else
             {
