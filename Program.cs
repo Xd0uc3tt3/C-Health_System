@@ -28,24 +28,24 @@ namespace HealthSystem
                 Console.ReadKey();
 
                 Random random = new Random();
-                int nextMove = random.Next(1, 11); 
+                int nextMove = random.Next(1, 11);
 
                 if (nextMove <= 8)
                 {
                     Console.Clear();
-                    TakeDamage();
+                    TakeDamage(nextMove);
                     ShowHud();
                 }
                 else if (nextMove == 9)
                 {
                     Console.Clear();
-                    Heal();
+                    Heal(nextMove);
                     ShowHud();
                 }
                 else
                 {
                     Console.Clear();
-                    RegenerateShield();
+                    RegenerateShield(nextMove);
                     ShowHud();
                 }
             }
@@ -104,10 +104,8 @@ namespace HealthSystem
 
         }
 
-        static void TakeDamage()
+        static void TakeDamage(int damageAmount)
         {
-            Random random = new Random();
-            int damageAmount = random.Next(1, 26);
 
             if (shield != 0)
             {
@@ -138,10 +136,8 @@ namespace HealthSystem
 
         }
 
-        static void Heal()
+        static void Heal(int healAmount)
         {
-            Random random = new Random();
-            int healAmount = random.Next(1, 26);
 
             if (health <= 99)
             {
@@ -161,10 +157,8 @@ namespace HealthSystem
             }
         }
 
-        static void RegenerateShield()
+        static void RegenerateShield(int regenShieldAmount)
         {
-            Random random = new Random();
-            int regenShieldAmount = random.Next(1, 26);
 
             if (shield <= 99)
             {
@@ -202,7 +196,7 @@ namespace HealthSystem
             {
                 GameOver();
             }
-            
+
         }
 
         static void GameOver()
